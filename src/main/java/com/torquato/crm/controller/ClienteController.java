@@ -19,6 +19,33 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
+     /**
+     * Endpoint para listar todos os clientes cadastrados.
+     *
+     * @return ResponseEntity contendo a lista de clientes e status 200 (OK).
+     */
+    @GetMapping
+    public ResponseEntity<List<Cliente>> listarTodosClientes() {
+        List<Cliente> clientes = clienteService.listarTodosClientes();
+        return ResponseEntity.ok().body(clientes);
+    }
+
+    /**
+     * Endpoint para buscar um cliente pelo ID.
+     *
+     * @param id ID do cliente a ser buscado.
+     * @return ResponseEntity contendo o cliente encontrado e status 200 (OK).
+     */
+    @GetMapping("/{id}")
+    public ResponseEntity<Cliente> buscarClientePorId(@PathVariable Long id) {
+        try {
+            Cliente cliente = clienteService.buscarClientePorId(id);
+            return ResponseEntity.ok(cliente);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     /**
      * Endpoint para adicionar um novo cliente.
      *
@@ -59,33 +86,6 @@ public class ClienteController {
     public ResponseEntity<Void> removerCliente(@PathVariable Long id) {
         clienteService.removerCliente(id);
         return ResponseEntity.noContent().build();
-    }
-
-    /**
-     * Endpoint para buscar um cliente pelo ID.
-     *
-     * @param id ID do cliente a ser buscado.
-     * @return ResponseEntity contendo o cliente encontrado e status 200 (OK).
-     */
-    @GetMapping("/{id}")
-    public ResponseEntity<Cliente> buscarClientePorId(@PathVariable Long id) {
-        try {
-            Cliente cliente = clienteService.buscarClientePorId(id);
-            return ResponseEntity.ok(cliente);
-        } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    /**
-     * Endpoint para listar todos os clientes cadastrados.
-     *
-     * @return ResponseEntity contendo a lista de clientes e status 200 (OK).
-     */
-    @GetMapping
-    public ResponseEntity<List<Cliente>> listarTodosClientes() {
-        List<Cliente> clientes = clienteService.listarTodosClientes();
-        return ResponseEntity.ok().body(clientes);
     }
 
     /**

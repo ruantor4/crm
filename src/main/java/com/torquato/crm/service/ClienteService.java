@@ -18,6 +18,27 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
+     /**
+     * Lista todos os clientes cadastrados no sistema.
+     *
+     * @return Lista de clientes.
+     */
+    public List<Cliente> listarTodosClientes() {
+        return clienteRepository.findAll();
+    }
+
+     /**
+     * Busca um cliente pelo ID fornecido.
+     *
+     * @param id ID do cliente a ser buscado.
+     * @return Cliente encontrado.
+     * @throws IllegalArgumentException Se o cliente não for encontrado.
+     */
+    public Cliente buscarClientePorId(Long id) {
+        return clienteRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Cliente com ID " + id + " não encontrado."));
+    }
+
     /**
      * Adiciona um novo cliente ao sistema.
      *
@@ -54,27 +75,6 @@ public class ClienteService {
      */
     public void removerCliente(Long id) {
         clienteRepository.deleteById(id);
-    }
-
-    /**
-     * Busca um cliente pelo ID fornecido.
-     *
-     * @param id ID do cliente a ser buscado.
-     * @return Cliente encontrado.
-     * @throws IllegalArgumentException Se o cliente não for encontrado.
-     */
-    public Cliente buscarClientePorId(Long id) {
-        return clienteRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Cliente com ID " + id + " não encontrado."));
-    }
-
-    /**
-     * Lista todos os clientes cadastrados no sistema.
-     *
-     * @return Lista de clientes.
-     */
-    public List<Cliente> listarTodosClientes() {
-        return clienteRepository.findAll();
     }
 
     /**
