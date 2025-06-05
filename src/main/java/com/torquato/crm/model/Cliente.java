@@ -42,6 +42,11 @@ public class Cliente {
     private String email;
 
     /**
+     * Número de cpf do cliente para contato.
+     */
+    private String cpf;
+
+    /**
      * Número de telefone do cliente para contato.
      */
     private String telefone;

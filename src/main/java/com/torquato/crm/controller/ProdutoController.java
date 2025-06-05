@@ -3,6 +3,7 @@ package com.torquato.crm.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,7 +44,7 @@ public class ProdutoController {
      * @param id ID do produto a ser buscado.
      * @return ResponseEntity contendo o produto encontrado e status 200 (OK).
      */
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Produto> buscarProdutoPorId(@PathVariable Long id){
         try {
             Produto produto = produtoService.buscarProdutoPorId(id);
@@ -72,7 +73,7 @@ public class ProdutoController {
      * @param produto Dados atualizados do produto.
      * @return ResponseEntity contendo o produto atualizado e status 200 (OK).
      */
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Produto> atualizarProduto(@PathVariable Long id, @RequestBody Produto produto){
         try {
             Produto produtoAtualizado = produtoService.atualizarProduto(id, produto);
@@ -88,7 +89,7 @@ public class ProdutoController {
      * @param id ID do produto a ser removido.
      * @return ResponseEntity com status 204 (No Content) se a remoção for bem-sucedida.
      */
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> removerProduto(@PathVariable Long id){
         try {
             produtoService.removerProduto(id);
@@ -104,13 +105,13 @@ public class ProdutoController {
      * @param id ID do produto.
      * @return ResponseEntity contendo os detalhes do produto e status 200 (OK).
      */
-    @GetMapping("{id}")
+    @GetMapping("/{id}/detalhes")
     public ResponseEntity<String> getDetalhesProduto(@PathVariable Long id){
         try {
             String detalhes = produtoService.getDetalhesProduto(id);
             return ResponseEntity.ok(detalhes);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Produto não encontrado");
         }
     }
     

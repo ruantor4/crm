@@ -3,6 +3,7 @@ package com.torquato.crm.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +46,7 @@ public class VendaController {
      * @param id ID de venda a ser buscado.
      * @return ResponseEntity contendo a venda encontrada e status 200 (OK).
      */
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Venda> buscarVendaPorId(@PathVariable Long id){
         try {
             Venda venda = vendaService.buscarVendaPorId(id);
@@ -74,7 +75,7 @@ public class VendaController {
      * @param venda Dados atualizados de venda.
      * @return ResponseEntity contendo a venda atualizada e status 200 (OK).
      */
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Venda> atualizarVenda(@PathVariable Long id, @RequestBody Venda venda){
         try {
             Venda vendaAtualizada = vendaService.atualizarVenda(id, venda);
@@ -90,7 +91,7 @@ public class VendaController {
      * @param id ID de venda a ser removido.
      * @return ResponseEntity com status 204 (No Content) se a remoção for bem-sucedida.
      */
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> removerVenda(@PathVariable Long id){
         try {
             vendaService.removerVenda(id);
@@ -106,13 +107,13 @@ public class VendaController {
      * @param id ID de venda.
      * @return ResponseEntity contendo os detalhes da venda e status 200 (OK).
      */
-    @GetMapping("{id}")
+    @GetMapping("/{id}/detalhes")
     public ResponseEntity<String> getDetalhesVenda(@PathVariable Long id){
        try {
             String detalhes = vendaService.getDetalhesVenda(id);
             return ResponseEntity.ok(detalhes);
        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Venda não encontrada");
        } 
     }
 
