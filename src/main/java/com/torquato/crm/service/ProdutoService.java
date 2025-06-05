@@ -74,7 +74,9 @@ public class ProdutoService {
      * @param id ID do produto a ser removido.
      */
     public void removerProduto(Long id){
+        buscarProdutoPorId(id);
         produtoRepository.deleteById(id);
+        
     }
 
     /**
