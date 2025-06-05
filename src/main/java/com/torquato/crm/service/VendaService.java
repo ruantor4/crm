@@ -75,6 +75,7 @@ public class VendaService {
      * @param id ID de venda a ser removido.
      */
     public void removerVenda(Long id){
+        buscarVendaPorId(id);
         vendaRepository.deleteById(id);
     }
 

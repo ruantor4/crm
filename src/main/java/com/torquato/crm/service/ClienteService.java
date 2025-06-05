@@ -74,6 +74,7 @@ public class ClienteService {
      * @param id ID do cliente a ser removido.
      */
     public void removerCliente(Long id) {
+        buscarClientePorId(id);
         clienteRepository.deleteById(id);
     }
 

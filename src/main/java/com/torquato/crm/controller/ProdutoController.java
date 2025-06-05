@@ -47,7 +47,7 @@ public class ProdutoController {
     public ResponseEntity<Produto> buscarProdutoPorId(@PathVariable Long id){
         try {
             Produto produto = produtoService.buscarProdutoPorId(id);
-        return ResponseEntity.ok().body(produto);
+            return ResponseEntity.ok().body(produto);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.notFound().build();
         }
