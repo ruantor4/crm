@@ -63,7 +63,7 @@ public class VendaService {
             venda.setCliente(vendaAtualizada.getCliente());
             venda.setQuantidade(vendaAtualizada.getQuantidade());
             venda.setTotal(vendaAtualizada.getTotal());
-            venda.setProdutos(vendaAtualizada.getProdutos());
+            venda.setItens(vendaAtualizada.getItens());
             return vendaRepository.save(venda);
         })
         .orElseThrow(() -> new IllegalArgumentException("Venda com ID " + id + " não encontrada."));
@@ -88,6 +88,6 @@ public class VendaService {
     public String getDetalhesVenda(long id){
         Venda venda = buscarVendaPorId(id);
         return String.format("Cliente: %s | Quantidade: %s | Produtos %s | Total %s", 
-        venda.getCliente(), venda.getQuantidade(), venda.getProdutos(), venda.getTotal());
+        venda.getCliente(), venda.getQuantidade(), venda.getItens(), venda.getTotal());
     }
 }

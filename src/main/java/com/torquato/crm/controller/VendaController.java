@@ -63,7 +63,7 @@ public class VendaController {
      * @return ResponseEntity contendo a venda adicionado e status 201 (Created).
      */
     @PostMapping
-    public ResponseEntity<Venda> adicionarVenda(@RequestBody Venda venda){
+    public ResponseEntity<Venda> cadastarVenda(@RequestBody Venda venda){
         Venda novaVenda = vendaService.adicionarVenda(venda);
         return ResponseEntity.ok().body(novaVenda);
     }

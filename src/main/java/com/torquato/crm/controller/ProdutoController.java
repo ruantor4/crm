@@ -61,7 +61,7 @@ public class ProdutoController {
      * @return ResponseEntity contendo o produto adicionado e status 201 (Created).
      */
     @PostMapping
-    public ResponseEntity<Produto> adicionarProduto(@RequestBody Produto produto) {
+    public ResponseEntity<Produto> cadastrarProduto(@RequestBody Produto produto) {
         Produto novoProduto = produtoService.adicionarPorduto(produto);
         return ResponseEntity.ok().body(novoProduto);
     }

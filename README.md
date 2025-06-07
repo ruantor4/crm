@@ -49,7 +49,9 @@ O projeto segue o padrão MVC (Model-View-Controller) e utiliza Spring Data JPA 
 URL base: http://localhost:8080/
 
 Documentação Swagger: http://localhost:8080/swagger-ui.html
+## Diagrama do Projeto
 
+![Diagrama do Projeto](docs/Diagrama%20CRM.png)
 ## Estrutura do Projeto
 
 - model — Classes que representam as entidades do domínio (Cliente, Produto, Venda, Notificação, etc).

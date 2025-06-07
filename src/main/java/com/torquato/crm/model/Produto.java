@@ -3,14 +3,14 @@ package com.torquato.crm.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,26 +26,12 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Produto {
 
-    /**
-     * Identificador único do produto.
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /**
-     * Nome do produto.
-     */
     private String nome;
-
-    /**
-     * Preço unitário do produto.
-     */
     private Double preco;
-
-    /**
-     * Descrição detalhada do produto.
-     */
     private String descricao;
 
     /**
@@ -55,16 +41,11 @@ public class Produto {
     @JoinColumn(name = "sistema_crm_id")
     private SistemaCRM sistemaCRM;
 
-    /**
-     * Relacionamento com a venda.
-     * Cada produto pode ser vendido em várias vendas, sendo um relacionamento N:M.
-     */
-    @ManyToMany
-    @JoinTable(
-        name = "item_venda", 
-        joinColumns = @JoinColumn(name = "produto_id"), 
-        inverseJoinColumns = @JoinColumn(name = "venda_id")
-    )
-    private List<Venda> vendas;  // Relacionamento N:M com Venda
-}
+   /**
+    * Itens relacionados a este produto (rel. 1:N via ItemVenda).
+    */
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
+    private List<ItemVenda> itens;
+
+    }
 

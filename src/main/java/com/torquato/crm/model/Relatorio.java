@@ -19,7 +19,7 @@ import lombok.Data;
 public class Relatorio {
     
     @Id
-    private Long id;  // Adicione um identificador único
+    private Long id;
 
     @ManyToMany
     private List<Venda> vendas; // Relatório pode incluir várias vendas
@@ -31,6 +31,6 @@ public class Relatorio {
      * Relacionamento com o SistemaCRM.
      * Cada relatório está associado a um SistemaCRM específico.
      */
-    @ManyToOne
+     @ManyToOne
     private SistemaCRM sistemaCRM;
 }

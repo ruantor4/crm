@@ -2,14 +2,14 @@ package com.torquato.crm.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,12 +25,21 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Venda {
 
-    /**
-     * Identificador único da venda.
-     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private Integer quantidade;
+    private Double total;
+
+   /**
+    * Itens relacionados a esta venda (rel. 1:N via ItemVenda).
+    */
+    @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
+    private List<ItemVenda> itens;
+
+    @ManyToOne
+    private SistemaCRM sistemaCRM;  // Relacionamento ManyToOne com SistemaCRM
 
     /**
      * Cliente que realizou a compra.
@@ -39,25 +48,4 @@ public class Venda {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-
-    /**
-     * Quantidade de produtos adquiridos na venda.
-     */
-    private int quantidade;
-
-    /**
-     * Valor total da venda calculado com base na quantidade e preço do produto.
-     */
-    private double total;
-
-    @ManyToMany
-    @JoinTable(
-        name = "item_venda",
-        joinColumns = @JoinColumn(name = "venda_id"),
-        inverseJoinColumns = @JoinColumn(name = "produto_id")
-    )
-    private List<Produto> produtos;
-
-    @ManyToOne
-    private SistemaCRM sistemaCRM;  // Relacionamento ManyToOne com SistemaCRM
 }

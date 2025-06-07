@@ -3,7 +3,6 @@ package com.torquato.crm.model;
 import java.util.List;
 
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -69,10 +68,10 @@ public class SistemaCRM {
     /**
      * Usuário associado ao SistemaCRM.
      * O SistemaCRM pode ser utilizado por um único usuário, que terá permissões específicas para interagir com o sistema.
-     * Relacionamento de associação: O SistemaCRM é associado a um único Usuário.
+     * Relacionamento de associação: O SistemaCRM é associado a um único Usuário. \\ REAVER!!!
      * 
      * @see Usuario
      */
-    @OneToOne(mappedBy = "sistemaCRM")
-    private Usuario usuario;  // Associação 1:1 com Usuário
+    @OneToMany(mappedBy = "sistemaCRM")
+    private List<Usuario> usuarios;
 }
