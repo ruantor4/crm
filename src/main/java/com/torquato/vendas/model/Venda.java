@@ -1,4 +1,4 @@
-package com.torquato.crm.model;
+package com.torquato.vendas.model;
 
 import java.util.List;
 
@@ -37,9 +37,6 @@ public class Venda {
     */
     @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL)
     private List<ItemVenda> itens;
-
-    @ManyToOne
-    private SistemaCRM sistemaCRM;  // Relacionamento ManyToOne com SistemaCRM
 
     /**
      * Cliente que realizou a compra.

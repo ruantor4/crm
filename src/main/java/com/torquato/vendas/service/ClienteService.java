@@ -1,12 +1,12 @@
-package com.torquato.crm.service;
+package com.torquato.vendas.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.torquato.crm.model.Cliente;
-import com.torquato.crm.repository.ClienteRepository;
+import com.torquato.vendas.model.Cliente;
+import com.torquato.vendas.repository.ClienteRepository;
 
 /**
  * Serviço responsável pela lógica de negócio relacionada aos clientes.

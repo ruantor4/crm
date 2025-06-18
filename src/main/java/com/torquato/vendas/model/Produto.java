@@ -1,4 +1,4 @@
-package com.torquato.crm.model;
+package com.torquato.vendas.model;
 
 
 import java.util.List;
@@ -8,8 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -33,13 +31,6 @@ public class Produto {
     private String nome;
     private Double preco;
     private String descricao;
-
-    /**
-     * Produto relacionado com venda.
-     */
-    @ManyToOne
-    @JoinColumn(name = "sistema_crm_id")
-    private SistemaCRM sistemaCRM;
 
    /**
     * Itens relacionados a este produto (rel. 1:N via ItemVenda).

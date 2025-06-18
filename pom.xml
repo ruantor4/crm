@@ -12,7 +12,7 @@
 	<artifactId>crm</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>crm</name>
-	<description>Central Relationship Manager</description>
+	<description>Sistema de Vendas</description>
 	 <properties>
         <!-- Definição da versão do Java a ser utilizada no projeto -->
         <java.version>17</java.version>

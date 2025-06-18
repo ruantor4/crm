@@ -1,4 +1,4 @@
-package com.torquato.crm.model;
+package com.torquato.vendas.model;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.torquato.crm.controller;
+package com.torquato.vendas.controller;
 
 import java.util.List;
 
@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.torquato.crm.model.Produto;
-import com.torquato.crm.service.ProdutoService;
+import com.torquato.vendas.model.Produto;
+import com.torquato.vendas.service.ProdutoService;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;

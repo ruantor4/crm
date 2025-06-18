@@ -1,11 +1,13 @@
-package com.torquato.crm.controller;
+package com.torquato.vendas.controller;
 
-import com.torquato.crm.model.Cliente;
-import com.torquato.crm.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.torquato.vendas.model.Cliente;
+import com.torquato.vendas.service.ClienteService;
+
 import java.util.List;
 
 /**

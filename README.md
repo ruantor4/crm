@@ -1,58 +1,32 @@
-# CRM - Customer Relationship Management
+# 🛒 Sistema de Vendas
 
-## Descrição
+Este é um sistema de gerenciamento de vendas desenvolvido em **Java** com **Spring Boot**, utilizando **Spring Data JPA** para persistência, banco de dados **MySQL** via **Docker**, documentação com **Swagger**, arquitetura **MVC**, e uso de **Lombok** para redução de código repetitivo.
 
-Este é um sistema básico de CRM (Customer Relationship Management) desenvolvido em Java com Spring Boot. O objetivo do projeto é gerenciar informações de clientes, produtos, vendas e notificações, facilitando o acompanhamento e relacionamento com os clientes.
+## 📌 Funcionalidades
 
-O projeto segue o padrão MVC (Model-View-Controller) e utiliza Spring Data JPA para persistência de dados em banco H2 (banco em memória para desenvolvimento).
+- Cadastro e gerenciamento de clientes
+- Registro de vendas com múltiplos produtos
+- Cálculo automático do total da venda
+- Histórico de compras por cliente
+- Emissão de relatórios de vendas e clientes
+- Notificações para os clientes
+- Autenticação de usuários do sistema
 
-## Funcionalidades
+## 🛠️ Tecnologias Utilizadas
 
-- Cadastro e gerenciamento de clientes.
-- Cadastro e gerenciamento de produtos.
-- Registro e acompanhamento de vendas.
-- Sistema de notificações para clientes.
-- Relatórios simples integrados ao sistema.
-- Uso do padrão MVC para organização do código.
-- Integração com banco de dados H2 para facilitar testes e desenvolvimento.
+| Tecnologia        | Finalidade                                  |
+|-------------------|---------------------------------------------|
+| Java 17+          | Linguagem principal                         |
+| Spring Boot       | Framework principal para desenvolvimento    |
+| Spring Data JPA   | ORM para acesso ao banco de dados           |
+| MySQL             | Banco de dados relacional                   |
+| Docker            | Containerização do banco de dados           |
+| Lombok            | Redução de boilerplate no código Java       |
+| Swagger (OpenAPI) | Documentação interativa dos endpoints       |
 
-## Tecnologias Utilizadas
+## 🧱 Arquitetura
 
-- Java 17
-- Spring Boot
-- Spring Data JPA
-- Banco de dados H2 (em memória)
-- Maven (gerenciador de dependências)
-- Swagger (OpenAPI) para documentação da API
-
-## Como Rodar o Projeto
-
-### Pré-requisitos
-
-- Java 17 ou superior instalado.
-- Maven instalado (para compilação e gerenciamento de dependências).
-
-### Passos
-
-1. Clone o repositório:
-
-   ```bash
-   git clone https://github.com/ruantor4/crm.git
-   cd crm
-
-2. Compile e rode a aplicação usando Maven:
-
-   ```bash
-    mvn clean spring-boot:run
-3. Acesse a API no navegador ou via ferramentas como Postman:
-
-URL base: http://localhost:8080/
-
-Documentação Swagger: http://localhost:8080/swagger-ui.html
-## Diagrama do Projeto
-
-![Diagrama do Projeto](docs/Diagrama%20CRM.png)
-## Estrutura do Projeto
+O projeto segue a arquitetura MVC com separação por pacotes:
 
 - model — Classes que representam as entidades do domínio (Cliente, Produto, Venda, Notificação, etc).
 - repository — Interfaces para acesso e manipulação dos dados no banco.
@@ -60,14 +34,73 @@ Documentação Swagger: http://localhost:8080/swagger-ui.html
 - controller — Endpoints REST para comunicação com clientes via HTTP.
 - config — Configurações da aplicação (ex: Swagger, banco, etc).
 
-## Próximos Passos e Melhorias
+## 🗃️ Modelagem (UML)
+#### Diagrama do Projeto
+![Diagrama do Projeto](docs/SistemaVendas.drawio.png)
 
-- Implementar autenticação e autorização de usuários.
-- Melhorar a interface do usuário (adicionar frontend).
-- Adicionar testes unitários e de integração.
-- Criar relatórios mais completos e exportáveis.
-- Integrar com banco de dados real (MySQL, PostgreSQL).
 
-## Contato
+## 🐳 Docker
 
-Para Dúvidas ou sugestões, entre em contato: ruan.tor4@hotmail.com
+### Subindo o banco de dados
+
+```bash
+docker run --name mysql-vendas -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=sistemavendas -p 3306:3306 -d mysql:8.0
+```
+
+### Acesso via terminal:
+
+```bash
+docker exec -it mysql-vendas bash
+mysql -u root -p
+```
+
+## 🚀 Executando o Projeto:
+
+### ⚙️ Requisitos
+
+-   Java 17 ou superior
+-   Maven
+-   Docker
+ 
+### 📋 Etapas  
+1. Clone este repositorio:
+
+ ```bash
+git clone https://github.com/ruantor4/sistema-vendas.git
+```
+
+2.   Suba o banco de dados MySQL via Docker
+    
+3.   Configure o `application.properties` ou `application.yml`
+
+```bash
+# Database config MySQL
+
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=jdbc:mysql://localhost:3306/sistemavendas
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+spring.jpa.show-sql: true
+```
+    
+4.   Execute a aplicação com:
+
+
+ ```bash
+./mvnw spring-boot:run
+```
+
+## 🔍 Swagger
+Após rodar o projeto, acesse a documentação interativa da API:
+ 
+ ```bash
+http://localhost:8080/swagger-ui/index.html
+```
+
+## 🗨️ Contato
+
+Para Dúvidas ou sugestões, entre em contato: 
+
+ruan.tor4@hotmail.com

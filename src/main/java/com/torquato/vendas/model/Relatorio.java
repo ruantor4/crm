@@ -1,4 +1,4 @@
-package com.torquato.crm.model;
+package com.torquato.vendas.model;
 
 
 import java.util.List;
@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -27,10 +26,4 @@ public class Relatorio {
     @ManyToMany
     private List<Cliente> clientes; // Relatório pode incluir vários clientes
 
-    /**
-     * Relacionamento com o SistemaCRM.
-     * Cada relatório está associado a um SistemaCRM específico.
-     */
-     @ManyToOne
-    private SistemaCRM sistemaCRM;
 }

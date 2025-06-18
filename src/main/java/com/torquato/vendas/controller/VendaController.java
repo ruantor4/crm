@@ -1,4 +1,4 @@
-package com.torquato.crm.controller;
+package com.torquato.vendas.controller;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.torquato.crm.model.Venda;
-import com.torquato.crm.service.VendaService;
+import com.torquato.vendas.model.Venda;
+import com.torquato.vendas.service.VendaService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
